@@ -12,8 +12,22 @@ class Euler2
   def initialize
     # assign a variable called answer
     answer = 0
+    # select for even fibonacci numbers
+    even_fibonacci = compute_fibonacci.select { |n| n % 2 == 0 }
+    # the answer is the sum of the values
+    even_fibonacci.each { |w| answer += w }
     # output the answer to the command line
     puts "Answer: #{answer}"
+  end
+  
+  def compute_fibonacci(limit = 4000000)
+    set = [0,1]
+    while set.last < limit do
+      y = set.length - 2
+      z = set[y] + set.last
+      set.push(z)
+    end
+    return set# an array of fibonacci numbers
   end
 end
 
